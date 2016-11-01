@@ -1,14 +1,31 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <title>First Page</title>
-  </head>
-  <body>
-    <div>
-                <h1><a href="books">1st PAGE, so spicy</a></h1>
-            </div>
-    <p>Hi there!</p>
-    <p>It 1st page works!</p>
-  </body>
-</html>
+{% extends 'blog/siteshab.html' %}
+
+{% block body %}
+    <div id='pst'>
+      <table>
+      {% for post in posts %}
+         <div>
+            <tr>
+              <td>
+             <h1><a href="{% url 'bookexmp' pk=post.pk %}">{{ post.title }}</a></h1>
+             <img src={{ post.img.url }} width="200" height="250"  >
+           </td>
+               <td>
+             <p>{{ post.text|linebreaksbr }}</p>
+             <p>published: {{ post.published_date }}</p>
+           </td>
+             </tr>
+         </div>
+      {% endfor %}
+    </table>
+    </div>
+    <script>
+    var pos = 0;
+                    while (true) {
+                        var foundPos = document.body.innerHTML.indexOf("blog/", pos);
+                        if (foundPos == -1) break;
+                        document.getElementById("pst").innerHTML= document.getElementById("pst").innerHTML.replace('blog/', '/');
+                        pos = foundPos + 1; // продолжить поиск со следующей
+                    }
+    </script>
+  {% endblock %}
