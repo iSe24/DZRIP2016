@@ -1,11 +1,9 @@
 {% load staticfiles %}
 <html>
   <head>
-
     <title>ZakazKnig.ru</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap/bootstrap-theme.min.css' %}">
     <link rel="stylesheet" href="{% static '/css/blog.css' %}">
     <link href="{% static '/img/48-armchair-20.png' %}" rel="shortcut icon" type="image/x-icon0" />
   </head>
@@ -13,20 +11,17 @@
   <header>
     <a href="/" title="На главную" id="logo"> ZakazKnig.ru </a><span id="contact">О нас</span>
     {% if user.is_authenticated %}
-    <span class='a1'><a href='logout' title="Выход">  Выход </a></span>
+    <span class='a1'><a href="{% url 'logout' %}" title="Выход">  Выход </a></span>
     <span class='a1' >Здравствуй, {{user.username}}</span>
     {% else%}
-    <span class='a1'><a href='register' title="Регистрация"> Регистрация </a></span>
-    <span class='a1'><a href='login' title="Зайти"> Вход </a></span>
+    <span class='a1'><a href="{% url 'register' %}" title="Регистрация"> Регистрация </a></span>
+    <span class='a1'><a href="{% url 'login' %}" title="Зайти"> Вход </a></span>
     {% endif %}
-    
-
     {% block header %}
     {% endblock %}
   </header>
     {% block body %}
     {% endblock %}
-
     <footer>
       <div title="..." id="logoFoot">МГТУ им Н.Э.Баумана.  В учебных целях для некоммерческого использования.&copy; Москва 2016г. </div>
     </footer>

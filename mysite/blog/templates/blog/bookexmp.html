@@ -1,32 +1,31 @@
 {% extends 'blog/siteshab.html' %}
-
 {% block body %}
 <div id='pst'>
   <table width="80%">
-        <tr>
-          <td >
+    <tr>
+      <td >
          <h1>{{ post.title }}</h1>
          <img src={{ post.img.url }} width="250" height="350"  >
-          </td>
-           <td >
+      </td>
+      <td >
          <h4>{{ post.book_author|linebreaksbr }}</h4>
          <p>{{ post.text|linebreaksbr }}</p>
          <p>Заказан : {{ post.ordered }}</p>
-         Уже заказали:
+          Уже заказали:
           {% for bu in book_user %}
-            <p>{{ bu.user }} : {{bu.number}}</p>
+          <p>{{ bu.user }} : {{bu.number}}</p>
           {% endfor %}
-       </td>
-         </tr>
-</table>
+      </td>
+    </tr>
+  </table>
 </div>
-    <script>
+<script>
     var pos = 0;
-                    while (true) {
-                        var foundPos = document.body.innerHTML.indexOf("blog/", pos);
-                        if (foundPos == -1) break;
-                        document.getElementById("pst").innerHTML= document.getElementById("pst").innerHTML.replace('blog/', '/');
-                        pos = foundPos + 1; // продолжить поиск со следующей
-                    }
-    </script>
-  {% endblock %}
+    while (true) {
+          var foundPos = document.body.innerHTML.indexOf("blog/", pos);
+          if (foundPos == -1) break;
+          document.getElementById("pst").innerHTML= document.getElementById("pst").innerHTML.replace('blog/', '/');
+          pos = foundPos + 1; // продолжить поиск со следующей
+                 }
+</script>
+{% endblock %}

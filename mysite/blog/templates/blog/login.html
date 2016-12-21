@@ -1,5 +1,4 @@
 {% extends 'blog/siteshab.html' %}
-
 {% block title %}
 {% endblock%}
 {% block body %}
@@ -8,7 +7,6 @@
   {% endif %}
     <form action="" method="post">
       {% csrf_token %}
-      <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
       {{ form.as_p }}
       <button type="submit">Войти</button>
     </form>
